@@ -1,0 +1,19 @@
+eureka:
+  client:
+    enabled:  true
+    service-url:
+      defaultZone:  http://localhost:8761/eureka/
+server:
+  port: 9091
+spring:
+  cloud:
+    config:
+      discovery:
+        true
+  application:
+    name: service2
+
+logging:
+  level:
+    service2.RemoteService: debug
+
