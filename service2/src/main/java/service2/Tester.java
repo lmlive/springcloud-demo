@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import service2.service.RemoteService1;
@@ -31,12 +32,12 @@ public class Tester {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @GetMapping("/remote")
+    @GetMapping("/remote/{name}")
     @ResponseBody
-    public Object test() {
+    public Object test(@PathVariable("name") String name) {
 //        List<ServiceInstance> list = discoveryClient.getInstances("service1");
 //        return list;
-        return remoteService1.getUserName("lm");
+        return remoteService1.getUserName(name);
     }
 
     @GetMapping("/beans")
